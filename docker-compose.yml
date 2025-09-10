@@ -1,0 +1,47 @@
+version: "3"
+services:
+    nginx:
+        build:
+            context: .
+            dockerfile: ./docker/ngnix/Dockerfile
+        ports:
+            - "8080:80"
+        networks:
+            - internal
+        volumes:
+            - ./:/var/www/html/
+            - ./storage/logs/nginx:/var/log/nginx/
+        container_name: nginx
+    php:
+        build:
+            context: .
+            dockerfile: docker/php/Dockerfile
+        networks:
+            - internal
+        volumes:
+            - ./:/var/www/html/
+            - ./storage/logs/php/php.log:/var/log/fpm-php.www.log
+        container_name: php
+        expose:
+            - "9000"
+    mysql:
+        build:
+            context: .
+            dockerfile: docker/mysql/Dockerfile
+        ports:
+            - "3306:3306"
+        container_name: db
+        volumes:
+            - ./db-data:/var/lib/mysql
+        networks:
+            - internal
+    react:
+        build:
+            context: .
+            dockerfile: react/Dockerfile
+        ports:
+            - "3000:3000"
+        container_name: frontend
+networks:
+    internal:
+        driver: bridge
