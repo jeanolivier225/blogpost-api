@@ -11,13 +11,13 @@ export default defineConfig({
         tailwindcss()
     ],
     preview: {
-        port: 8081,
+        port: 3000,
         strictPort: true,
     },
     server: {
-        port: 8081,
+        port: 3000,
         strictPort: true,
         host: true,
-        origin: "http://0.0.0.0:8081",
+        origin: "http://0.0.0.0:3000",
     },
 })

@@ -63,7 +63,7 @@ class AuthController extends Controller
         $user = (User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['email']),
+            'password' => bcrypt($data['password']),
             'verified' => true,
             'verified_at' => now(),
         ]))->fresh([]);

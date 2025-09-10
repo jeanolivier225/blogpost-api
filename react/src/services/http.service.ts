@@ -4,7 +4,7 @@ import type {AuthResponse} from "../models/HttpResponse/AuthResponse.ts";
 import type {UpdateProfile} from "../models/FormData/UpdateProfile.ts";
 
 // Base URL
-const API_BASE_URL = "http://127.0.0.1:8090/api";
+const API_BASE_URL = "http://127.0.0.1:8080/api";
 
 // Instance Axios
 const api = axios.create({
